@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="./css/styles.css"> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+body{
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  background: #6495ED;
+}
+.upload_class{
+  border: 2px dotted #fff;
+  height: 400px;
+  width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 5px;
+}
+
+.upload_class .icon{
+  font-size: 100px;
+  color: #fff;
+}
+.upload_class header{
+  font-size: 30px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.input_button{
+  display: flex;
+  margin-top: 2rem;
+  margin-left: 5rem;
+  justify-content: center;
+  padding: 10px 25px;
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+}
+    </style>
+</head>
+<body>
+    <div>
+        <form method="post" action="submit" enctype = "multipart/form-data">
+            <div class="upload_class">
+                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                <header>Click below on the upload button</header>
+                <input class="input_button" id="file_upload_input" name="file_upload_input" type="file">
+            </div>
+            <div class="mt-4">
+                <h3>Enter recipient emails</h3>
+            </div>
+            <div id="firstDiv">
+                <label for="recipient_1">Recipient 1</label>
+                <div class="input-group ">
+                  <input style="background-color: #6495ED; color: white;" name="recipient_1" type="email" class="form-control" required>
+                    <div class="input-group-append">
+                        <button class="btn btn-success" type="button" onclick=add_input(1)>+</button>
+                    </div>
+                </div>
+            </div>
+           
+            <div id="secondDiv" style="display: none;">
+                <label for="recipient_2" class="mt-2">Recipient 2</label>
+            <div class="input-group">
+                <input style="background-color: #6495ED; color: white;" name="recipient_2" type="text" class="form-control" >
+                <div class="input-group-append">
+                    <button class="btn btn-danger" type="button" onclick=sub_input(2)>-</button>
+                    <button class="btn btn-success" type="button" onclick=add_input(2)>+</button>
+                </div>
+            </div>
+            </div>
+            
+            <div id="thirdDiv" style="display: none;">
+                <label for="recipient_3" class="mt-2">Recipient 3</label>
+            <div class="input-group">
+                <input style="background-color: #6495ED; color: white;" name="recipient_3" type="text" class="form-control">
+                <div class="input-group-append">
+                    <button class="btn btn-danger" type="button"onclick=sub_input(3)>-</button>
+                    <button class="btn btn-success" type="button" onclick=add_input(3)>+</button>
+                </div>
+            </div>
+            </div>
+
+            <div id="fourthDiv" style="display: none;">
+                <label for="recipient_4" class="mt-2">Recipient 4</label>
+              <div class="input-group">
+                <input style="background-color: #6495ED; color: white;" name="recipient_4" type="text" class="form-control">
+                <div class="input-group-append">
+                    <button class="btn btn-danger" type="button" onclick=sub_input(4)>-</button>
+                    <button class="btn btn-success" type="button" onclick=add_input(4)>+</button>
+                </div>
+              </div>
+            </div>
+            
+            <div id="fifthDiv" style="display: none;">
+                <label for="recipient_5" class="mt-2">Recipient 5</label>
+              <div class="input-group">
+                <input style="background-color: #6495ED; color: white;" name="recipient_5" type="text" class="form-control">
+                <div class="input-group-append">
+                    <button class="btn btn-danger" type="button" onclick=sub_input(5)>-</button>
+                    
+                </div>
+              </div>
+            </div>
+              
+              <button class="btn btn-primary mt-3" type="submit">Send Emails</button>
+        </form>
+    </div>
+    <script src="index.js"></script>
+    <script>
+        function add_input(initial_count){
+    initial_count++;
+    switch(initial_count){
+        case 2:
+            document.getElementById("secondDiv").style.display="block"
+            break;
+        case 3:
+            document.getElementById("thirdDiv").style.display="block"
+            break;
+        case 4:
+            document.getElementById("fourthDiv").style.display="block"
+            break;
+        case 5:
+            document.getElementById("fifthDiv").style.display="block"
+            break;
+    }
+}
+function sub_input(initial_count){
+    switch(initial_count){
+        case 2:
+            document.getElementById("secondDiv").style.display="none"
+            break;
+        case 3:
+            document.getElementById("thirdDiv").style.display="none"
+            break;
+        case 4:
+            document.getElementById("fourthDiv").style.display="none"
+            break;
+        case 5:
+            document.getElementById("fifthDiv").style.display="none"
+            break;
+    }
+}
+    </script>
+</body>
+</html>
