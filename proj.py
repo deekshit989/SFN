@@ -1,10 +1,5 @@
-from crypt import methods
-from email import message
 import boto3
-import os
-from django.shortcuts import render
 import psycopg2
-import json
 import datetime
 from flask import Flask,flash, request,redirect, render_template,url_for
 
