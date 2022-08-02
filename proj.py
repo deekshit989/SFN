@@ -39,9 +39,15 @@ def signupsubmit():
         database="postgres", user='postgres', password='Deekshit2399', host='database-1-instance-1.cpfgthxswpv6.us-east-1.rds.amazonaws.com', port= '5432'
     )
     db_conn_cur = db_conn.cursor()
-    db_conn_cur.execute("""insert into users_data(first_name,last_name,email_id,password) values (%s,%s,%s,%s) """,(f_name,l_name,u_email,u_password))
-    db_conn.commit()
-    return render_template("signin.html")
+    db_conn_cur.execute(""" select * from users_data where email_id= '{email}' """.format(email=u_email))
+    email_verify = len(db_conn_cur.fetchall()) == 0
+    if email_verify:
+        db_conn_cur.execute("""insert into users_data(first_name,last_name,email_id,password) values (%s,%s,%s,%s) """,(f_name,l_name,u_email,u_password))
+        db_conn.commit()
+        return render_template("signin.html")
+    else:
+        message="User with same email already exists"
+        return render_template("signup.html",message=message)
 
 @app.route("/signinsubmit",methods=["GET","POST"])
 def signinsubmit():
