@@ -73,7 +73,7 @@ def submitForm():
     recipient_4 = request.form.get("recipient_4")
     recipient_5 = request.form.get("recipient_5")
     print(file_upload_input.filename.replace(" ",""))
-    s3_upload_return = s3.upload_file(file_upload_input.filename,"bucketproj",file_upload_input.filename.replace(" ",""))
+    s3_upload_return = s3.upload_file(file_upload_input.filename.replace(" ",""),"bucketproj",file_upload_input.filename.replace(" ",""))
     email_client = boto3.client('ses',region_name="us-east-1")
     s3_file_link = "https://bucketproj.s3.amazonaws.com/{}".format(file_upload_input.filename.replace(" ",""))
     body = """Please click on the below link to download the file
@@ -113,10 +113,10 @@ def submitForm():
     )
     db_conn_cur = db_conn.cursor()
     current_time_stamp = datetime.datetime.now()
-    db_conn_cur.execute("""insert into upload_data_billing(file_name,uploaded_on,emails_list) values (%s,%s,%s) """,(file_upload_input.filename,current_time_stamp,emails_list))
+    db_conn_cur.execute("""insert into upload_data_billing(file_name,uploaded_on,emails_list) values (%s,%s,%s) """,(file_upload_input.filename.replace(" ",""),current_time_stamp,emails_list))
     db_conn.commit()
     
     return render_template("index.html")
 
 if __name__=='__main__':
-   app.run()
+   app.run(host='0.0.0.0')
