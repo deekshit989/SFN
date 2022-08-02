@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <title>Project- SignIn</title>
+   
+</head>
+<body>
+    <section class="vh-100" style="background-color: #6495ED;">
+        <div class="container py-5 h-100">
+            <form action="/signinsubmit" method="post">
+                <div class="d-flex justify-content-center">
+                    <div class="col-xl-5">
+                      <div class="bg-dark text-white">
+                        <div class="p-5 text-center">
+              
+                          <div class="mt-md-4 pb-5">
+              
+                            <h2 class="fw-bold">SIGNIN</h2>
+                            <p class="text-white-50 mb-5">Please Enter Email and Password </p>
+              
+                            <div class="mb-4">
+                              <input type="email" id="u_email" name="u_email" class="form-control form-control-lg" />
+                              <label class="form-label" for="u_email">Email ID</label>
+                            </div>
+
+                            <div class="mb-4">
+                                <input type="password" id="u_password" name="u_password" class="form-control form-control-lg" />
+                                <label class="form-label" for="u_password">Password</label>
+                            </div>
+
+                            <p class="text-white-50 mb-5">{{message}} </p>
+                            <button class="btn btn-outline-light px-5 btn-lg" type="submit">Submit</button>
+              
+                          </div>
+              
+                          <div>
+                            <p class="mb-0">Dont have an account? <a href="/signup" class="text-white-50 fw-bold">Sign Up</a>
+                            </p>
+                          </div>
+              
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </form>
+        </div>
+      </section>
+</body>
+</html>
